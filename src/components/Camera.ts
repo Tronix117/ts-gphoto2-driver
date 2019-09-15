@@ -13,7 +13,7 @@ import {PortInfo} from "./PortInfo";
 export class Camera extends PointerWrapper<PointerCamera> {
   private initialized: boolean = false;
   private closed: boolean = false;
-  private _widgets: CameraWidgets;
+  private _widgets: CameraWidgets | null = null;
 
   constructor() {
     super({method: "gp_camera", refType: RefCamera});

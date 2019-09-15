@@ -1,6 +1,10 @@
-import {refType, types} from "ref";
-import * as ArrayType from "ref-array";
-import * as StructType from "ref-struct";
+import ref, {refType, types} from "ref-napi";
+// import * as ArrayType from "ref-array";
+// import * as StructType from "ref-struct";
+// tslint:disable-next-line:variable-name
+const ArrayType = require("ref-array-di")(ref);
+// tslint:disable-next-line:variable-name
+const StructType = require("ref-struct-di")(ref);
 import {
   GPCameraDriverStatus,
   GPCameraFileOperation,

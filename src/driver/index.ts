@@ -1,5 +1,3 @@
-require("source-map-support").install();
-
 export * from "./modules";
 export * from "./types";
 export * from "./GPhoto2Driver";
