@@ -46,7 +46,14 @@ export class Liveview extends EventEmitter implements ICloseable {
       default:
         this.file = new CameraFile();
     }
-    this.timer = setInterval(() => this.onTick(), 1000 / this.options.fps);
+
+    this.timer = setInterval(() => {
+      return this.onTick().catch(err => {
+        console.error(err);
+        this.emit("error", err);
+        this.stop();
+      });
+    }, 1000 / this.options.fps);
   }
 
   public stop() {
@@ -60,6 +67,7 @@ export class Liveview extends EventEmitter implements ICloseable {
 
   public close() {
     this.stop();
+    this.emit("end");
 
     return this;
   }

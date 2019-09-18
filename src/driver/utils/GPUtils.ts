@@ -2,6 +2,7 @@ import {readCString} from "ref-napi";
 import {ICloseable} from "../../interfaces";
 import {GPhoto2Driver} from "../GPhoto2Driver";
 import {GPCodes, PointerOf} from "../types";
+import {GPError} from "./GPError";
 
 /**
  *
@@ -12,7 +13,7 @@ import {GPCodes, PointerOf} from "../types";
 export function checkCode(returnValue: any, method: string = "") {
   if (returnValue < GPCodes.GP_OK) {
     const errorStr = GPhoto2Driver.gp_port_result_as_string(returnValue);
-    throw new Error(`${method} returned ${returnValue}: ${GPCodes[returnValue] || "Unsupported code"} > ${errorStr}`);
+    throw new GPError(returnValue, `${method} returned ${returnValue}: ${GPCodes[returnValue] || "Unsupported code"} > ${errorStr}`);
   }
 
   return returnValue;
