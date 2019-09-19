@@ -1,4 +1,5 @@
-import ref, {refType, types} from "ref-napi";
+import {refType, types} from "ref-napi";
+import * as ref from "ref-napi";
 // import ArrayType from "ref-array";
 // import StructType from "ref-struct";
 // tslint:disable-next-line:variable-name
@@ -38,7 +39,7 @@ export const RefCameraFile = refType("void");
 /**
  *
  */
-export type StructCameraText = StructType & {text: PointerOf<string> & IStructBuffer};
+export type StructCameraText = (typeof StructType) & {text: PointerOf<string> & IStructBuffer};
 /**
  *
  * @type {StructType}
@@ -51,7 +52,7 @@ export const StructCameraText = StructType({
 /**
  *
  */
-export type StructCameraFilePath = StructType & {
+export type StructCameraFilePath =  (typeof StructType) & {
   name: PointerOf<string> & IStructBuffer;
   folder: PointerOf<string> & IStructBuffer;
   ref(): PointerOf<StructCameraFilePath>;

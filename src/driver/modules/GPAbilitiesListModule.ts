@@ -1,4 +1,5 @@
-import ref, {refType, types} from "ref-napi";
+import {refType, types} from "ref-napi";
+import * as ref from "ref-napi";
 // import * as ArrayType from "ref-array";
 // import * as StructType from "ref-struct";
 // tslint:disable-next-line:variable-name
@@ -33,7 +34,7 @@ export const RefAbilitiesList = refType("void");
 /**
  *
  */
-export type StructCameraAbilities = StructType & {
+export type StructCameraAbilities =  (typeof StructType) & {
   model: PointerOf<string> & IStructBuffer;
   speed: PointerOf<number[]>;
   port: GPPortType;
