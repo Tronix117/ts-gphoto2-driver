@@ -50,7 +50,6 @@ export class Liveview extends EventEmitter implements ICloseable {
     this.timer = setInterval(() => {
       return this.onTick().catch(err => {
         console.error(err);
-        this.stop();
         this.emit("error", err);
       });
     }, 1000 / this.options.fps);
